@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurora Login</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+
+    <div id="app" class="glass-card">
+        <div class="header">
+            <h1>Startup</h1>
+            <p>Enter your credentials to continue</p>
+        </div>
+
+        <form @submit.prevent="handleLogin">
+            <div class="input-group">
+                <input type="text" v-model="username" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <input type="password" v-model="password" placeholder="Password" required>
+            </div>
+            
+            <button type="submit">
+                {{ isLoading ? 'Memproses...' : 'Log In' }}
+            </button>
+        </form>
+
+        <div v-if="errorMessage" class="error-text">
+            {{ errorMessage }}
+        </div>
+    </div>
+
+    <script src="apiService.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
