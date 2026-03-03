@@ -19,7 +19,7 @@
             <span class="brand-text">Tech Panel</span>
         </div>
 
-        <aside class="sidebar glass-card" :class="{ collapsed: isSidebarCollapsed }" @click.stop>
+        <aside class="sidebar" :class="{ collapsed: isSidebarCollapsed }" @click.stop>
             <div class="sidebar-header">
                 <button class="toggle-btn" @click.stop="toggleSidebar">
                     <span class="material-symbols-outlined">menu</span>
@@ -37,7 +37,12 @@
                 <span class="menu-text">Role Management</span>
             </div>
 
-            <div class="menu-item" :class="{ active: currentMenu === 'settings' }" @click="selectMenu('settings')" style="margin-top: auto; margin-bottom: 10px;">
+            <div class="menu-item" :class="{ active: currentMenu === 'profile' }" @click="selectMenu('profile')" style="margin-top: auto;">
+                <span class="material-symbols-outlined" :style="{ color: userRole === 'admin' ? '#ff4d4d' : '#00d4a1' }">account_circle</span>
+                <span class="menu-text">Profil</span>
+            </div>
+
+            <div class="menu-item" :class="{ active: currentMenu === 'settings' }" @click="selectMenu('settings')" style="margin-bottom: 10px;">
                 <span class="material-symbols-outlined">settings</span>
                 <span class="menu-text">Settings</span>
             </div>
@@ -50,20 +55,131 @@
 
         <main class="main-content">
             
-            <div v-if="currentMenu === 'home'" class="content-card glass-card">
-                <div style="margin-bottom: 20px;">
-                    <h1>Selamat Datang!</h1>
-                    <p style="color: rgba(255,255,255,0.7);">Anda login sebagai <strong>{{ userRole.toUpperCase() }}</strong></p>
+            <div v-if="currentMenu === 'home'" class="home-container" style="overflow-y: auto; padding-right: 15px; padding-bottom: 30px;">
+                
+                <h1 style="font-size: 2.2rem; font-weight: 600; margin-bottom: 20px;">Dashboard Magang</h1>
+                
+                <div class="glass-card profile-card" style="margin-bottom: 30px;">
+                    <div class="profile-header">
+                        <div class="avatar">
+                            <span class="material-symbols-outlined">account_circle</span>
+                        </div>
+                        <div class="profile-title">
+                            <h2>Fauzan Irawan</h2>
+                            <span class="badge">Informatika - Universitas Muhammadiyah Malang</span>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-grid">
+                        <div class="info-box">
+                            <span class="material-symbols-outlined icon">apartment</span>
+                            <div class="info-text">
+                                <label>Perusahaan</label>
+                                <p>PT Hirose Electronic Indonesia</p>
+                            </div>
+                        </div>
+                        <div class="info-box">
+                            <span class="material-symbols-outlined icon">event</span>
+                            <div class="info-text">
+                                <label>Periode Magang</label>
+                                <p>[Isi Tanggal Mulai] - [Isi Tanggal Selesai]</p>
+                            </div>
+                        </div>
+                        <div class="info-box">
+                            <span class="material-symbols-outlined icon">supervisor_account</span>
+                            <div class="info-text">
+                                <label>Pembimbing Lapangan</label>
+                                <p>[Isi Nama Mentor]</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; font-family: monospace; font-size: 0.8rem; word-break: break-all;">
-                    Token Aktif: <br> <span style="color: #00d4a1;">{{ userToken }}</span>
+
+                <div style="margin-bottom: 15px;">
+                    <h2 style="font-size: 1.4rem; font-weight: 600;">Log Kegiatan & Mini Project</h2>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">Rincian tugas berdasarkan pembimbing lapangan</p>
+                </div>
+
+                <div class="projects-grid">
+                    
+                    <div class="project-card glass-card">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="material-symbols-outlined icon-devops">terminal</span>
+                                <h3>DevOps</h3>
+                            </div>
+                            <span class="mentor-badge">Pak Rizki</span>
+                        </div>
+                        <ul class="project-tasks">
+                            <li>Membuat frontend login sederhana</li>
+                            <li>Setup dan menggunakan Git</li>
+                            <li>Eksplorasi fitur-fitur Zammad</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card glass-card">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="material-symbols-outlined icon-plc">precision_manufacturing</span>
+                                <h3>PLC & HMI</h3>
+                            </div>
+                            <span class="mentor-badge">Pak Dzulkifli</span>
+                        </div>
+                        <ul class="project-tasks">
+                            <li>Belajar PLC dan Ladder Diagram</li>
+                            <li>Konversi Ladder Diagram menjadi HMI</li>
+                            <li>Membuat project PLC dan HMI Counter</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card glass-card">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="material-symbols-outlined icon-micro">memory</span>
+                                <h3>Microcontroller</h3>
+                            </div>
+                            <span class="mentor-badge">Pak Rudi</span>
+                        </div>
+                        <ul class="project-tasks">
+                            <li>Pengenalan Microcontroller</li>
+                            <li>Eksplorasi microcontroller RDZ</li>
+                            <li>Membuat project counter sederhana menggunakan ESP32 dan display</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card glass-card">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="material-symbols-outlined icon-backend">database</span>
+                                <h3>Backend API</h3>
+                            </div>
+                            <span class="mentor-badge">Pak Rian</span>
+                        </div>
+                        <ul class="project-tasks">
+                            <li>Pengenalan Backend dan query database</li>
+                            <li>Pengenalan dan pembuatan endpoint API</li>
+                            <li>Project membuat REST API endpoint</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div v-if="currentMenu === 'profile'" class="content-card glass-card">
+                <div style="margin-bottom: 20px;">
+                    <h1>Profil Pengguna</h1>
+                    <p style="color: rgba(255,255,255,0.7);">Detail profil dan aktivitas pengguna.</p>
+                </div>
+                <div style="background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px;">
+                    <p>Halaman profil sedang dalam pengembangan.</p>
                 </div>
             </div>
 
             <div v-if="currentMenu === 'settings'" class="content-card glass-card">
                 <div style="margin-bottom: 20px;">
                     <h1>Settings</h1>
-                    <p style="color: rgba(255,255,255,0.7);">Pengaturan profil dan preferensi aplikasi</p>
+                    <p style="color: rgba(255,255,255,0.7);">Pengaturan preferensi aplikasi</p>
                 </div>
                 <div style="background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px;">
                     <p>Fitur pengaturan akan segera hadir.</p>
@@ -171,11 +287,8 @@
                 </div>
 
                 <div style="margin-bottom: 25px;">
-                    <label style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Grup Hak Akses</label>
-                    <select v-model="addFormData.role_id" style="width: 100%; padding: 10px; margin-top: 5px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 8px; outline: none;" disabled>
-                        <option :value="1">Admin</option>
-                        <option :value="2">User</option>
-                    </select>
+                    <label style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Hak Akses</label>
+                    <input type="text" :value="addFormData.role_id === 1 ? 'Admin' : 'User'" style="width: 100%; padding: 10px; margin-top: 5px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.5); border-radius: 8px; outline: none; cursor: not-allowed;" readonly>
                 </div>
 
                 <div style="display: flex; justify-content: flex-end; gap: 10px;">
@@ -195,8 +308,8 @@
                 </div>
 
                 <div style="margin-bottom: 25px;">
-                    <label style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Grup Hak Akses</label>
-                    <select v-model="editFormData.role_id" style="width: 100%; padding: 10px; margin-top: 5px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 8px; outline: none;">
+                    <label style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Ubah Hak Akses</label>
+                    <select v-model="editFormData.role_id" class="custom-select">
                         <option :value="1">Admin</option>
                         <option :value="2">User</option>
                     </select>

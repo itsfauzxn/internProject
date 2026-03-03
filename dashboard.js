@@ -4,7 +4,7 @@ createApp({
     setup() {
         const currentMenu = ref('home');
         const activeRoleTab = ref('admin');
-        const isSidebarCollapsed = ref(false);
+        const isSidebarCollapsed = ref(true);
         const activeDropdown = ref(null);
 
         const userRole = ref('');
