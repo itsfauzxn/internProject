@@ -314,3 +314,79 @@ body::after {
     color: white;
 }
 
+/* --- KEMBALIKAN GAYA KHUSUS LOGIN PAGE --- */
+body.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 420px;
+    padding: 45px 40px;
+}
+
+.login-box .header { 
+    margin-bottom: 35px; 
+}
+
+.login-box .header h1 { 
+    font-size: 2.2rem; 
+    font-weight: 600; 
+    margin-bottom: 5px; 
+    letter-spacing: -0.5px; 
+}
+
+.login-box .header p { 
+    font-size: 0.9rem; 
+    color: rgba(255, 255, 255, 0.7); 
+}
+
+.login-box .input-group { 
+    margin-bottom: 25px; 
+}
+
+.login-box .input-group input {
+    width: 100%;
+    padding: 12px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.login-box .input-group input:focus { 
+    border-bottom-color: #00d4a1; 
+}
+
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.login-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.error-text { 
+    color: #ff4d4d; 
+    font-size: 0.85rem; 
+    margin-top: 15px; 
+    text-align: center; 
+    min-height: 20px; 
+}

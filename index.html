@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
-<body>
+<body class="login-page">
 
-    <div id="app" class="glass-card">
+    <div id="app" class="glass-card login-box">
         <div class="header">
-            <h1>Startup</h1>
+            <h1>Tech Startup</h1>
             <p>Enter your credentials to continue</p>
         </div>
 
@@ -23,7 +23,7 @@
                 <input type="password" v-model="password" placeholder="Password" required>
             </div>
             
-            <button type="submit">
+            <button type="submit" class="login-btn">
                 {{ isLoading ? 'Memproses...' : 'Log In' }}
             </button>
         </form>
